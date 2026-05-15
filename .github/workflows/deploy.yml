@@ -1,0 +1,29 @@
+name: Pipeline de Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-e-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Exibir versão do Node
+        run: node -v
+
+      - name: Simular build da aplicação
+        run: |
+          echo "Realizando build..."
+          mkdir dist
+          echo "<h1>Deploy realizado com sucesso!</h1>" > dist/index.html
+
+      - name: Simular deploy
+        run: |
+          echo "Iniciando deploy..."
+          sleep 3
+          echo "Deploy finalizado com sucesso!"
